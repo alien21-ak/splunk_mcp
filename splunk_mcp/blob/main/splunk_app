@@ -1,0 +1,25 @@
+[{"id": "last_login_dashboard", "label": "Last 3 Users Logged In", "description": "Displays the last 3 users who logged in to Splunk.", "type": "dashboard", "visualizations": [
+  {
+    "type": "table",
+    "search": "| rest /services/authentication/users | sort -_time | head 3 | table title, _time",
+    "options": {
+      "title": "Last 3 Users Logged In",
+      "fields": ["title", "_time"]
+    }
+  }
+] }]
+
+[endpoint "Splunk App Configuration"]
+[ui]
+view = last_login_dashboard
+
+[launcher]
+author = YourName
+description = A Splunk app that shows the last 3 users who logged in in a dashboard
+version = 1.0.0
+
+[setup]
+is_configured = 1
+
+[default]
+refresh = 10
